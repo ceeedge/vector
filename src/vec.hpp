@@ -38,6 +38,8 @@ struct Vec2
         return Vec2<T>{x*rhs, y*rhs};
     } 
 
+    constexpr auto operator<=>(const Vec2<T>&) const = default;
+
     constexpr auto magnitude() const
     {
         return std::sqrt(x^2 + y^2);
@@ -77,6 +79,9 @@ struct Vec3
     {
         return Vec3<T>{-x, -y, -z};
     }
+
+    constexpr auto operator<=>(const Vec3<T>&) const = default;
+
     constexpr auto magnitude() const 
     {
         return std::sqrt(x^2 + y^2 + z^2);
