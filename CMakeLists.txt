@@ -12,4 +12,17 @@ project(
 )
 
 
+# vector lib (header only)
+add_library(vec INTERFACE)
+target_include_directories(vec SYSTEM INTERFACE
+    ${CMAKE_SOURCE_DIR}/include/vec
+)
+
+
 add_subdirectory(src)
+
+option(ENABLE_TESTING "Enable Testing" ON)
+if(ENABLE_TESTING)
+    message("Testing enabled.")
+    add_subdirectory(test)
+endif()
