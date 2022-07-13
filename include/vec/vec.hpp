@@ -18,7 +18,7 @@ struct Vec2
 
   constexpr auto operator+=(Vec2<T> rhs) const { return Vec2<T>{ x + rhs.x, y + rhs.y }; }
 
-  constexpr auto operator-=(Vec2<T> rhs) const { return Vec2<T>{ x - rhs.x, y - rhs.y }; }
+  constexpr auto operator-=(Vec2<T> rhs) const { return Vec2<T>{ x - rhs.x, y - rhs.y } };  
 
   constexpr auto operator-() const { return Vec2<T>{ -x, -y }; }
 
