@@ -13,7 +13,6 @@ requires numeric<T>
 struct Vec2
 {
   T x = 0, y = 0;
-  constexpr Vec2<T>() = default;
   constexpr Vec2<T>(T x_, T y_) : x{ x_ }, y{ y_ } {}
 
   constexpr auto operator+=(Vec2<T> rhs) const { return Vec2<T>{ x + rhs.x, y + rhs.y }; }
@@ -26,7 +25,7 @@ struct Vec2
   requires numeric<U>
   constexpr auto operator*=(U rhs) const { return Vec2<T>{ x * rhs, y * rhs }; }
 
-  constexpr auto operator<=>(const Vec2<T> &) const = default;
+  friend constexpr auto operator<=>(const Vec2<T>&, const Vec2<T>&) = default;
 
   constexpr auto magnitude() const { return std::sqrt(x ^ 2 + y ^ 2); }
 };
@@ -46,14 +45,13 @@ struct Vec3
 {
   T x = 0, y = 0, z = 0;
 
-  constexpr Vec3<T>() = default;
   constexpr Vec3<T>(T x_, T y_, T z_) : x{ x_ }, y{ y_ }, z{ z_ } {}
 
   constexpr auto operator+=(Vec3<T> rhs) const { return Vec3<T>{ x + rhs.x, y + rhs.y, z + rhs.z }; }
   constexpr auto operator-=(Vec3<T> rhs) const { return Vec3<T>{ x - rhs.x, y - rhs.y, z - rhs.z }; }
   constexpr auto operator-() const { return Vec3<T>{ -x, -y, -z }; }
 
-  constexpr auto operator<=>(const Vec3<T> &) const = default;
+  friend constexpr auto operator<=>(const Vec3<T> &, const Vec3<T> &) = default;
 
   constexpr auto magnitude() const { return std::sqrt(x ^ 2 + y ^ 2 + z ^ 2); }
 
